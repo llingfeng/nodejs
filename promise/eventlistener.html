@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件监听</title>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    var startDate = new Date();
+    console.log("开始时间："+Number(startDate));
+    setTimeout(function () {
+        console.log("setTimeout执行的开始时间"+Number(new Date()));
+        console.log(new Date()-startDate);
+    },0);
+    $.post('index.html',function (result) {
+        console.log("ajax开始时间1"+Number(new Date()));
+    });
+    setTimeout(function () {
+        console.log("setTimeout执行的开始时间2"+Number(new Date()));
+        console.log(new Date()-startDate);
+    },0);
+    $.post('index.html',function (result) {
+        console.log("ajax开始时间2"+Number(new Date()));
+    });
+    while (new Date()-startDate<1000){
+
+    }
+    console.log("主线程结束时间："+Number(new Date()));
+</script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订阅/发布</title>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    $(function () {
+        jQuery.subscribe('done',f2);
+
+        function f1() {
+            setTimeout(function () {
+                jQuery.publish('done');
+            },0)
+        }
+
+        function f2() {
+            console.log("执行了f2方法");
+        }
+
+        f1();
+    })
+
+</script>
+</html>

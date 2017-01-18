@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function f1(callback) {
+        setTimeout(function () {
+            for(var i=0;i<100000;i++){
+                console.log("方法f1执行了"+i);
+            }
+            callback();
+        },0);
+    }
+
+    function f2() {
+        console.log("方法2执行了");
+    }
+
+    function f3() {
+        console.log("方法3执行了");
+    }
+    f1(f2);
+    f3();
+</script>
+</html>

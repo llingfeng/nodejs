@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		div{
+			width:100px;
+			height: 50px;
+			background-color: yellow;
+			border: 1px solid;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" id="input-box">
+	<div id="oneDiv"></div>
+	<div id="someDiv"></div>
+	<input type="text" id="textarea">
+</body>
+<script type="text/javascript">
+	document.getElementById('input-box').onkeypress = function(event) {
+		var that = this;
+		setTimeout(function(){
+			that.value = that.value.toUpperCase();
+		},0);
+	}
+
+	var oneDiv = document.getElementById('oneDiv');
+
+	// // 写法一
+	// for (var i = 0xA00000; i < 0xFFFFFF; i++) {
+	//   div.style.backgroundColor = '#' + i.toString(16);
+	// }
+	var timer;
+	var i=1;
+	function func() {
+	  oneDiv.innerHTML  = 'hello'+i;
+	  var f = setTimeout(func,10);
+	  if(i++ == 500) clearTimeout(f);
+	}
+
+	func();
+
+	var div = document.getElementById('someDiv');
+	var opacity = 1;
+	var fader = setInterval(function() {
+	  opacity -= 0.1;
+	  if (opacity >= 0) {
+	    div.style.opacity = opacity;
+	  } else {
+	    clearInterval(fader);
+	  }
+	}, 1000);
+
+	var ajaxAction = function(args){
+		alert(this.value);
+	}
+
+	document.getElementById('textarea').onkeydown = debounce(ajaxAction, 2500);
+
+	function debounce(fn, delay){
+	  var timer = null; // 声明计时器
+	  return function(){
+	    var context = this;
+	    var args = arguments;
+	    clearTimeout(timer);
+	    timer = setTimeout(function(){
+	      fn.apply(context, args);
+	    }, delay);
+	  }
+	}
+
+
+</script>
+</html>

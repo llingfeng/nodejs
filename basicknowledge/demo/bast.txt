@@ -1,0 +1,5 @@
+node.js流程
+-创建模块 teacher.js
+-导出模块 exports.add = function();
+-加载模块 var teacher = require('./teacher.js');
+-使用模块 teacher.add();
